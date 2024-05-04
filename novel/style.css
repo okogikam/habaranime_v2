@@ -1,0 +1,61 @@
+.img-cover {
+  max-width: 100%;
+}
+.card-img {
+  height: 200px;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+}
+.color-grey {
+  color: gray !important;
+}
+.disabled{
+    background-color: #6c757d !important;
+}
+.content-header {
+  max-width: 100%;
+  margin: 0px;
+  padding: 0px;
+  height: 350px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.page .cover-img {
+  position: relative;
+  
+}
+.page .cover-img img {
+  width: 100%;
+}
+.page .kategori{
+    padding-top: 300px !important;
+}
+.page .ringkasan {
+  min-height: 300px;
+  padding-top: 30px;
+}
+.page .card-img {
+  position: absolute;
+  left: -50px;
+  top: -80px;
+  padding: 5px;
+  background-color: white;
+  border-radius: 5px;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  box-shadow: 2px 2px 5px 0px rgb(201 204 212 / 75%);
+}
+@media screen and (max-width: 660px) {
+  .page .card-img {
+    position: unset;
+  }
+  .page .card {
+    top: -80px;
+  }
+  .page .kategori{
+    padding-top: 10px !important;
+    }
+}
