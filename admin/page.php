@@ -1,6 +1,6 @@
 <?php
 if(isset($_GET['p'])){
-    $p = get_post($_GET['p']);
+    $p = get_post(($_GET['p']));
 }else{
     $p = "Dashboard";
 }
@@ -29,8 +29,9 @@ if(isset($_GET['p'])){
 
     <!-- Main content -->
     <?php
-    if(file_exists( "./pages/".$p.".php")){
-        include_once "./pages/".$p.".php";
+    $p2 = str_replace(" ","",$p);
+    if(file_exists( "./pages/".$p2.".php")){
+        include_once "./pages/".$p2.".php";
     }else{
         include_once "./pages/Error.php";
     }

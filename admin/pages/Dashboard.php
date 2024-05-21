@@ -11,7 +11,7 @@
 
             <div class="info-box-content">
             <span class="info-box-text">All Posts</span>
-            <span class="info-box-number"> <?php echo tampilan_angka($data->banyak_post("artikel",$conn)) ?> </span>
+            <span class="info-box-number">  </span>
             </div>
             <!-- /.info-box-content -->
         </div>
@@ -45,7 +45,7 @@
 
             <div class="info-box-content">
             <span class="info-box-text">Users</span>
-            <span class="info-box-number"><?php echo $data->banyak_post("user",$conn) ?></span>
+            <span class="info-box-number"></span>
             </div>
             <!-- /.info-box-content -->
         </div>
@@ -60,7 +60,7 @@
 
             <div class="info-box-content">
             <span class="info-box-text">Visitor</span>
-            <span class="info-box-number"><?php echo tampilan_angka(totalPengunjung()); ?></span>
+            <span class="info-box-number"></span>
             </div>
             <!-- /.info-box-content -->
         </div>

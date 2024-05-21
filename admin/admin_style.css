@@ -1,0 +1,32 @@
+img{
+    max-width: 100%;
+}
+.opsi{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: right;
+}
+.select2-search__field, 
+.select2, input{
+    max-width: 100%;
+}
+.note-editor{
+    width: 100% !important;
+}
+.note-editing-area{
+    height: 500px;
+    overflow: scroll !important;
+}
+
+.pesan-api{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+@media screen and (max-width:400px) {
+    .opsi span{
+        display: none;
+    }
+}

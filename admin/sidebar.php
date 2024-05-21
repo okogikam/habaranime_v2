@@ -57,75 +57,75 @@
             </a>
             </li>
             <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="./?p=image" class="nav-link">
                 <i class="nav-icon far fa-image"></i>
                 <p>Image</p>
             </a>
             </li>
             <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="./?p=Page" class="nav-link">
                 <i class="nav-icon fas fa-pager"></i>
                 <p>Pages</p>
             </a>
             </li>
             <li class="nav-header">WIDGET</li>
             <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="./?p=Series Post" class="nav-link">
                 <i class="nav-icon fas fa-file-alt"></i>
                 <p>Series Post</p>
             </a>
             </li>
             <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="./?p=Featuret Post" class="nav-link">
                 <i class="nav-icon fas fa-file-archive"></i>
                 <p>Featuret Post</p>
             </a>
             </li>
             <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="./?p=Topics" class="nav-link">
                 <i class="nav-icon fas fa-tag"></i>
                 <p>Topics</p>
             </a>
             </li>
             <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="./?p=Categories" class="nav-link">
                 <i class="nav-icon fas fa-tags"></i>
                 <p>Categories</p>
             </a>
             </li>
             <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="./?p=HTML Tag" class="nav-link">
                 <i class="nav-icon fas fa-file-code"></i>
                 <p>HTML Tag</p>
             </a>
             </li>
             <li class="nav-header">SETTING</li>
             <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="./?p=User" class="nav-link">
                 <i class="nav-icon fas fa-users"></i>
                 <p>User</p>
             </a>
             </li>
             <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="./?p=Site option" class="nav-link">
                 <i class="nav-icon fas fa-screwdriver"></i>
                 <p>Site Option</p>
             </a>
             </li>
             <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="./?p=Publisher" class="nav-link">
                 <i class="nav-icon fas fa-globe"></i>
                 <p>Publisher</p>
             </a>
             </li>
             <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="./?p=Languages" class="nav-link">
                 <i class="nav-icon fas fa-language"></i>
                 <p>Languages</p>
             </a>
             </li>
             <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="./?p=Report" class="nav-link">
                 <i class="nav-icon fas fa-chart-area"></i>
                 <p>Report</p>
             </a>
