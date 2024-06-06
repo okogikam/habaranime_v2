@@ -6,10 +6,14 @@ include '../rot/connect.php';
         $result = $conn->query($query);
         return $result;
     }
-    function select_all($tabel){
+    function select_all($tabel,$option){
         global $conn;
         $hasil_akhir = array();
-        $query = "SELECT * FROM $tabel ORDER BY no DESC";
+        if(isset($option)){
+            $query = "SELECT * FROM $tabel $option";
+        }else{
+            $query = "SELECT * FROM $tabel";
+        }
         $result = $conn->query($query);
         $rows = $result->num_rows;
             for($x=0;$x<$rows;$x++){
@@ -68,7 +72,7 @@ include '../rot/connect.php';
 // akhir init function
 // post
   function tabel_daftar_post(){
-    $data = select_all("artikel");
+    $data = select_all("artikel"," ORDER BY no DESC");
     if(!is_array($data)){
         return;
     }
@@ -128,7 +132,7 @@ include '../rot/connect.php';
     }
     function displayKategori($kategori){
         $kategoris = explode(",",$kategori);
-        $data_kategori = select_all("kategori");
+        $data_kategori = select_all("kategori","");
         foreach($data_kategori as $kat){
             if(in_array($kat['kategori'],$kategoris) && $kat['kategori'] != ""){
                 echo "<option selected>$kat[kategori]</option>";
@@ -139,7 +143,7 @@ include '../rot/connect.php';
     }
     function displaytopik($tag){
         $tags = explode(",",$tag);
-        $data_tag = select_all("tag");
+        $data_tag = select_all("tag","");
         foreach($data_tag as $tg){
             if(in_array($tg['tag'],$tags) && $tg['tag'] != ""){
                 echo "<option selected>$tg[tag]</option>";
@@ -168,4 +172,26 @@ include '../rot/connect.php';
         }
     }
 // akhir write
+//image
+    function displayTagImage(){
+        $data_gambar = select_all("galery","GROUP BY tag");
+        echo "<div class='col-12'><button class='btn btn-sm btn-primary filter'>All</button>";
+        foreach($data_gambar as $gambar){
+            echo"
+            <button class='btn btn-sm btn-primary filter'>
+                $gambar[tag]
+            </button>";
+        }
+        echo "</div>";
+    }
+    function displayAllImage(){
+        $data_gambar = select_all("galery","ORDER BY no DESC");
+        foreach($data_gambar as $gambar){
+            echo"
+            <div class='col-1 card m-1 p-0 gambar-item' data-tag='$gambar[tag]'>
+                <img src='$gambar[gambar]' alt=''>
+            </div>";
+        }
+    }
+// akhir image
 ?>

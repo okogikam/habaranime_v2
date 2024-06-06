@@ -79,7 +79,7 @@ if(isset($_GET['id'])){
                     name="kategori[]"
                 >
                 
-
+                <?php displayKategori($data_post['kategori']); ?>
                 </select>
                 </div>
                 <div class="form-group">
@@ -91,6 +91,7 @@ if(isset($_GET['id'])){
                     name="topik[]"
                 >
                 
+                <?php displaytopik($data_post['tag']); ?>
 
                 </select>
                 </div>
@@ -101,15 +102,16 @@ if(isset($_GET['id'])){
                     id="select3"
                     name="series"
                 >
-                 
+                <?php displayseris($data_post['series']); ?>
+
                 </select>
                 </div>
                 <div class="form-group">
                 <label for="thumbneil">Gambar utama</label>
-                <input name="gambar" type="file" class="mb-3 form-control-border" />
+                <!-- <input name="gambar" type="file" class="mb-3 form-control-border" /> -->
                 <input name="url-gambar" type="text" class="mb-3 form-control" placeholder="URL" value="<?php echo $data_post['gambar']; ?>" />
                 <div class="privew">
-                    <img src="../dist/img/photo3.jpg" alt="" />
+                    <img id="imgPreview" src="<?php echo $data_post['gambar']; ?>" alt="" />
                 </div>
                 </div>
             </div>
@@ -133,6 +135,13 @@ if(isset($_GET['id'])){
     let btn = document.querySelectorAll('.btn');
     let form = document.querySelector("#form-fill");
     let status = document.querySelector(".status");
+    let thumbnell = document.querySelector("input[name='url-gambar']");
+    let imgPreview = document.querySelector("#imgPreview");
+
+    thumbnell.addEventListener("change",()=>{
+        imgPreview.src = thumbnell.value
+    })
+
     btn.forEach((b) => {
         b.addEventListener("click",(even)=>{
             even.preventDefault();
@@ -157,10 +166,10 @@ if(isset($_GET['id'])){
             if(result.status > 0){
                 status.innerHTML = "<i class='fa-solid fa-check'></i> Berhasil disimpan";
             }else{
-                status.innerHTML = "<i class='fa-solid fa-circle-exclamation'></i> Gagal disimpan";
+                status.innerHTML = `<i class='fa-solid fa-circle-exclamation'></i> Gagal disimpan : ${status.pesan}`;
             }
         } catch(e){
-            status.innerHTML = "<i class='fa-solid fa-circle-exclamation'></i> Gagal disimpan";
+            status.innerHTML = `<i class='fa-solid fa-circle-exclamation'></i> Gagal disimpan: ${e}`;
             console.error(e)
         }
     }
@@ -176,10 +185,10 @@ if(isset($_GET['id'])){
             if(result.status > 0){
                 status.innerHTML = "<i class='fa-solid fa-check'></i> Berhasil disimpan";
             }else{
-                status.innerHTML = "<i class='fa-solid fa-circle-exclamation'></i> Gagal disimpan";
+                status.innerHTML = `<i class='fa-solid fa-circle-exclamation'></i> Gagal disimpan: ${status.pesan}`;
             }
         } catch(e){
-            status.innerHTML = "<i class='fa-solid fa-circle-exclamation'></i> Gagal disimpan";
+            status.innerHTML = `<i class='fa-solid fa-circle-exclamation'></i> Gagal disimpan: ${e}`;
             console.error(e)
         }
     }

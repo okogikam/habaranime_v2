@@ -17,6 +17,28 @@ function dataquery($query){
     }
 }
 
+function select_all($tabel,$option){
+    global $conn;
+    $hasil_akhir = array();
+    if(isset($option)){
+        $query = "SELECT * FROM $tabel $option";
+    }else{
+        $query = "SELECT * FROM $tabel";
+    }
+    $result = $conn->query($query);
+    $rows = $result->num_rows;
+        for($x=0;$x<$rows;$x++){
+            $result->data_seek($x);
+            $data = $result->fetch_array(MYSQLI_ASSOC);
+            $hasil = array();
+            foreach($data as $item =>$isi){
+            $hasil  += array($item => $isi);
+            }
+            $hasil_akhir += array("$x"=>$hasil);
+        }
+        return $hasil_akhir; //hasil berupa array
+}
+
 function get_input ($var){
         $var = htmlentities($var); // untuk membuang semua HTML dari string
         $var = str_replace("'","td_ptk",$var);
@@ -79,5 +101,98 @@ function updatePost($id,$value){
         $result = dataquery($query);
     }
     return $result;
+}
+
+// upload image 
+function uploadImg($file){
+    $cek = getimagesize($file["tmp_name"]);
+    if($cek !== false){
+        $uploadOk = 1;
+    }else{
+        $uploadOk = 0;
+    }
+    if($uploadOk == 1){
+        $target_dir = "../../dist/upload/";
+        $target_file = $target_dir . basename($file["name"]);
+        // $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+        if(file_exists($target_file)){
+            $url = $target_file;
+        }else{
+            if(move_uploaded_file($file["tmp_name"], $target_file)){
+                $url = $target_file;                
+            }else{
+                $url = "";
+            }
+        }
+    }else{
+        $url = "";
+    }
+    return $url;
+}
+function simpanImg($tag,$url){
+    $query = "INSERT INTO galery(gambar,tag,alt,status) VALUES('$url','$tag','$tag','1')";
+    $result = dataquery($query);
+    return $result;
+}
+function openAllImage($tag){
+    // $query = "SELECT * FROM galery ORDER BY no DESC";
+    $result = select_all("galery","WHERE tag LIKE '%$tag%' AND status='1'");
+    return $result;
+}
+function updateImg($no,$col,$value){
+    $query = "UPDATE galery SET $col='$value' WHERE no='$no'";
+    $result = dataquery($query);
+    return $result;
+}
+// series 
+function openAllSeries(){
+    $data = array();
+    $result = select_all("artikel","ORDER BY view DESC");
+
+    foreach($result as $rs){
+        if(isset($data[$rs['anime']])){
+            $data[$rs['anime']]['post'] += 1;
+            $data[$rs['anime']]['view'] += $rs['view'];
+        }else{
+            $data[$rs['anime']]['post'] = 1;
+            $data[$rs['anime']]['view'] = $rs['view'];
+        }
+    }
+
+    return $data;
+}
+// tag
+function openAllTag(){
+    $data = array();
+    $result = select_all("tag","ORDER BY id_tag DESC");
+
+    foreach($result as $rs){
+        $tag = $rs['tag'];
+        $artikel = select_all("artikel","WHERE tag LIKE '%$tag%'");
+        $data[$rs['tag']]['post'] = count($artikel);
+        $data[$rs['tag']]['view'] = 0;
+        foreach($artikel as $ar){
+            $data[$rs['tag']]['view'] += $ar['view'];
+        }
+    }
+
+    return $data;
+}
+// kategori
+function openAllKategori(){
+    $data = array();
+    $result = select_all("kategori","ORDER BY id_kat DESC");
+
+    foreach($result as $rs){
+        $kategori = $rs['kategori'];
+        $artikel = select_all("artikel","WHERE kategori LIKE '%$kategori%'");
+        $data[$rs['kategori']]['post'] = count($artikel);
+        $data[$rs['kategori']]['view'] = 0;
+        foreach($artikel as $ar){
+            $data[$rs['kategori']]['view'] += $ar['view'];
+        }
+    }
+
+    return $data;
 }
 ?>

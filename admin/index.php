@@ -213,22 +213,22 @@ include_once "./rot/function-v2.php";
         });
       });
       $(".tabel").DataTable({
-            destroy: true,
-            responsive: true,
-            autoWidth: false,
-            ordering: true,
-            lengthMenu: [
-                [10, 50, 100, -1],
-                [10, 50, 100, "ALL"],
-            ],
-            buttons: ["copy", "excel", "pdf",
-                {
-                    extend: 'print',
-                    autoPrint: true,
-                    title: '<?php echo $p; ?>',
+          destroy: true,
+          responsive: true,
+          autoWidth: false,
+          ordering: false,
+          lengthMenu: [
+              [10, 50, 100, -1],
+              [10, 50, 100, "ALL"],
+          ],
+          buttons: ["copy", "excel", "pdf",
+              {
+                  extend: 'print',
+                  autoPrint: true,
+                  title: '<?php echo $p; ?>',
 
-                }
-            ]
+              }
+          ]
         }).buttons().container().appendTo('#tabel_1_wrapper .col-md-6:eq(0)');
 
       $(function () {
@@ -238,6 +238,19 @@ include_once "./rot/function-v2.php";
         $("#select1").select2();
         $("#select2").select2();
         $("#select3").select2();
+      });
+
+    </script>
+    <script>
+      let navlink = document.querySelectorAll(".nav-link");
+      navlink.forEach(link => {
+        link.classList.remove("active");
+        let queryString = window.location.search;
+        let urlParams = new URLSearchParams(queryString);
+        let nowAktif = urlParams.get('p');
+        if(link.dataset.nav === nowAktif){
+          link.classList.add("active")
+        }
       });
     </script>
   </body>

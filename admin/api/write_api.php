@@ -1,6 +1,6 @@
 <?php
-require_once "./fungsi.php";
 header('Content-Type: application/json; charset=utf-8');
+require_once "./fungsi.php";
 
 // get form value
 $id = get_input($_POST['post_id']);
@@ -26,14 +26,14 @@ if(isset($_POST['topik'])){
 $series = get_input($_POST['series']);
 $result = "";
 
-tambah_kategori($kategori);
-tambah_tag($topik);
+// tambah_kategori($kategori);
+// tambah_tag($topik);
 
 if(isset($_POST['post_id']) && $_POST['post_id'] != ""){
     $value = "$title#&#$isi#&#$url_gambar#&#$stat#&#Admin#&#$kategori#&#$topik#&#$series";    
     $result = updatePost($id,$value);
 }else{
-    $value = "'$title','$isi','$url_gambar',$stat,'Admin','$kategori','$topik','$series'";
+    $value = "'$title','$isi','$url_gambar','$stat','Admin','$kategori','$topik','$series'";
     $result = simpanPost($value);
 }
 
