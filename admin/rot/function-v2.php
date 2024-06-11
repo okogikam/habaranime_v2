@@ -194,4 +194,17 @@ include '../rot/connect.php';
         }
     }
 // akhir image
+// user 
+    function displayTabelUser(){
+        $data_user = select_all("user","ORDER BY no DESC");
+        foreach($data_user as $us){
+            echo "<tr>";
+            echo "<td>$us[user_name]</td>";
+            echo "<td>$us[email]</td>";
+            echo "<td>$us[status]</td>";
+            echo "<td></td>";
+            echo "</tr>";
+        }
+    }
+// akhir user 
 ?>
