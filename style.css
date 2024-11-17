@@ -1,0 +1,32 @@
+.blog-post .card{
+    overflow: hidden;
+}
+.thumbnail{
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    min-height: 100px;
+    background-blend-mode: overlay;
+}
+.thumbnail span{
+    position: absolute;
+    left: 10px;
+    top: 5px;
+    background-color: rgba(15, 72, 129, 0.726);
+    border-radius: 3px;
+    padding: 5px;
+    color: aliceblue;    
+}
+.thumbnail-cover{
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    background-color: rgba(17, 17, 17, 0.795);
+}
+.flex-column  h3{
+    height: 100px;
+    overflow: hidden;
+}
